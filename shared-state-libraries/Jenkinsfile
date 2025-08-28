@@ -1,14 +1,16 @@
 @Library("jenkins-shared-lib") _
 
 pipeline {
+    agent any
+
     parameters{
-        string(name: "Num1")
-        string(name: "Num2")
+        string(name: "Num1", description: "First number")
+        string(name: "Num2", description: "Second number")
         choice(name: "OPERATION",
             choices: ['add', 'subtract', 'multiply', 'divide'],
             description: 'Operation to perform on 2 numbers.')
     }
-    agent any
+    
     stages{
         stage ('helloworld_function') {
             steps{
@@ -18,9 +20,9 @@ pipeline {
         stage ('calculator_function') {
             steps{
                 echo "Executing ${params.OPERATION} on numbers: ${prams.Num1} and ${params.Num2}"
-                NUM1 = ${prams.Num1}
-                NUM2 = ${prams.Num2}
-                OPS = ${params.OPERATION}
+                def NUM1 = "${params.Num1}"
+                def NUM2 = "${params.Num2}"
+                def OPS = ${params.OPERATION}
                 calculator(NUM1, NUM2, OPS)
             }
         }
