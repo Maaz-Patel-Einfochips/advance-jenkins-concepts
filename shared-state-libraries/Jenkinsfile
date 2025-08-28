@@ -25,7 +25,7 @@ pipeline {
                     def NUM2 = params.Num2 as Integer
                     def OPS = "${params.OPERATION}"
 
-                    def result = calculatorFunc(NUM1, NUM2, OPS)
+                    def result = calculatorFunc.calculator(NUM1, NUM2, OPS)
                     echo "Result of ${OPS} between ${NUM1} and ${NUM2} = ${result}"
                 }
             }
