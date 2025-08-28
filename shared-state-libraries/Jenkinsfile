@@ -4,8 +4,8 @@ pipeline {
     agent any
 
     parameters{
-        string(name: "Num1", description: "First number")
-        string(name: "Num2", description: "Second number")
+        string(name: "Num1", defaultValue: "10", description: "First number")
+        string(name: "Num2", defaultValue: "5", description: "Second number")
         choice(name: "OPERATION",
             choices: ['add', 'subtract', 'multiply', 'divide'],
             description: 'Operation to perform on 2 numbers.')
@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('calculator_function') {
             steps{
-                echo "Executing ${params.OPERATION} on numbers: ${prams.Num1} and ${params.Num2}"
+                echo "Executing ${params.OPERATION} on numbers: ${params.Num1} and ${params.Num2}"
                 def NUM1 = "${params.Num1}"
                 def NUM2 = "${params.Num2}"
                 def OPS = ${params.OPERATION}
