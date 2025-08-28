@@ -25,7 +25,7 @@ pipeline {
                     def NUM2 = params.Num2 as Integer
                     def OPS = "${params.OPERATION}"
 
-                    calculatorFunc.calculator(NUM1, NUM2, OPS)
+                    calculatorFunc(NUM1, NUM2, OPS)
                 }
             }
         }
