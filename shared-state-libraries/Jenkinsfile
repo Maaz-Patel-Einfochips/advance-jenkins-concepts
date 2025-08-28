@@ -21,9 +21,10 @@ pipeline {
             steps{
                 script{
                     echo "Executing ${params.OPERATION} on numbers: ${params.Num1} and ${params.Num2}"
-                    def NUM1 = "${params.Num1}"
-                    def NUM2 = "${params.Num2}"
+                    def NUM1 = params.Num1 as Integer
+                    def NUM2 = params.Num2 as Integer
                     def OPS = ${params.OPERATION}
+
                     calculator(NUM1, NUM2, OPS)
                 }
             }
